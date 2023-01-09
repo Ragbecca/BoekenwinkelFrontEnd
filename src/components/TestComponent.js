@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as apiCalls from "../api/apiCalls";
 
 const TestComponent = () => {
