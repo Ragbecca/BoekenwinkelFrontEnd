@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class TopBar extends React.Component {

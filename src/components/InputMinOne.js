@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = (props) => {
+const InputMinOne = (props) => {
     let inputClassName = props.classes;
     if (props.hasError !== undefined) {
         inputClassName += props.hasError ? ' is-invalid' : ' is-valid';
@@ -16,6 +16,7 @@ const Input = (props) => {
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={props.onChange}
+                min='1'
                 required
             />
             {props.hasError && (
@@ -25,8 +26,8 @@ const Input = (props) => {
     );
 };
 
-Input.defaultProps = {
+InputMinOne.defaultProps = {
     onChange: () => { }
 };
 
-export default Input;
+export default InputMinOne;

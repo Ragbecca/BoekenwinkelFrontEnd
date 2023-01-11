@@ -24,6 +24,10 @@ export const createAddress = (address) => {
     return axios.post('/address/add', address);
 };
 
+export const createPublisher = (publisher) => {
+    return axios.post('publisher/add', publisher)
+};
+
 export const setAuthorizationHeader = ({ username, password, isLoggedIn }) => {
     if (isLoggedIn) {
         axios.defaults.headers.common['Authorization'] = `Basic ${btoa(

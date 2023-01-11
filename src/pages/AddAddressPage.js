@@ -1,14 +1,14 @@
 import React from "react";
-import { Navigate, redirect } from "react-router-dom";
 import * as apiCalls from "../api/apiCalls";
 import Input from "../components/Input";
+import InputMinOne from "../components/InputMinOne";
 import ButtonWithProgress from "../components/ButtonWithProgress";
 import CountriesOfWorldSelector from "../components/CountriesOfWorldSelector";
 
 class AddAddressPage extends React.Component {
     state = {
         city: '',
-        country: 'Afghanistan',
+        country: 'NL',
         house_number: 0,
         house_number_addon: '',
         street: '',
@@ -25,10 +25,8 @@ class AddAddressPage extends React.Component {
     };
 
     onChangeCountry = (event) => {
-        const value = event.target.value;
-        const errors = { ...this.state.errors };
-        delete errors.country;
-        this.setState({ country: value, errors });
+        const value = event;
+        this.setState({ country: value });
     };
 
     onChangeHouseNumber = (event) => {
@@ -88,7 +86,7 @@ class AddAddressPage extends React.Component {
                     </Input>
                 </div>
                 <div>
-                    <Input
+                    <InputMinOne
                         label="Huisnummer"
                         placeholder="Huisnummer"
                         type="number"
@@ -96,7 +94,7 @@ class AddAddressPage extends React.Component {
                         onChange={this.onChangeHouseNumber}
                         hasError={this.state.errors.house_number && true}
                         error={this.state.errors.house_number}>
-                    </Input>
+                    </InputMinOne>
                 </div>
                 <div>
                     <Input
@@ -120,11 +118,7 @@ class AddAddressPage extends React.Component {
                 </div>
                 <div>
                     <CountriesOfWorldSelector
-                        label="Land"
-                        value={this.state.country}
-                        onChange={this.onChangeCountry}
-                        hasError={this.state.errors.country && true}
-                        error={this.state.errors.country}>
+                        onChange={this.onChangeCountry}>
                     </CountriesOfWorldSelector>
                 </div>
                 <div className='text-center mt-1'>

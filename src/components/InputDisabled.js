@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = (props) => {
+const InputDisabled = (props) => {
     let inputClassName = props.classes;
     if (props.hasError !== undefined) {
         inputClassName += props.hasError ? ' is-invalid' : ' is-valid';
@@ -13,10 +13,8 @@ const Input = (props) => {
                 name={props.name}
                 className={inputClassName}
                 type={props.type || 'text'}
-                placeholder={props.placeholder}
                 value={props.value}
-                onChange={props.onChange}
-                required
+                disabled
             />
             {props.hasError && (
                 <span className="invalid-feedback">{props.error}</span>
@@ -25,8 +23,4 @@ const Input = (props) => {
     );
 };
 
-Input.defaultProps = {
-    onChange: () => { }
-};
-
-export default Input;
+export default InputDisabled;

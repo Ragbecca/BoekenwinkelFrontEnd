@@ -3,7 +3,7 @@ import Input from "../components/Input";
 import ButtonWithProgress from "../components/ButtonWithProgress";
 import { connect } from "react-redux";
 import * as authActions from "../redux/authActions";
-import { redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export class LoginPage extends React.Component {
 
@@ -11,7 +11,8 @@ export class LoginPage extends React.Component {
         username: '',
         password: '',
         apiError: undefined,
-        pendingApiCall: false
+        pendingApiCall: false,
+        redirectState: false
     }
 
     onChangeUsername = (event) => {
@@ -38,9 +39,7 @@ export class LoginPage extends React.Component {
         this.setState({ pendingApiCall: true })
         this.props.actions.postLogin(body)
             .then(() => {
-                this.setState({ pendingApiCall: false }, () => {
-                    return redirect("/homepage");
-                })
+                this.setState({ pendingApiCall: false, redirectState: true })
             })
             .catch(error => {
                 if (error.response) {
@@ -53,6 +52,12 @@ export class LoginPage extends React.Component {
         let disableSubmit = false;
         if (this.state.username === '') {
             disableSubmit = true;
+        }
+
+        const checkRedirectState = this.state.redirectState;
+
+        if (checkRedirectState) {
+            return <Navigate to="/homepage" />
         }
 
         return (

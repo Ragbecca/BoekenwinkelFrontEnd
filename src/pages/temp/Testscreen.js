@@ -4,13 +4,19 @@ import TestComponent from "../../components/TestComponent";
 import TestComponentList from "../../components/TestComponentList";
 
 class Testscreen extends React.Component {
+
+    onChangeAddress = (event) => {
+        const value = event;
+        console.log(value);
+    };
+
     render() {
         return (
             <div>
                 <TestComponent />
                 <TestComponentList />
                 <AddressSelector
-                    label="Adres">
+                    onChange={this.onChangeAddress}>
                 </AddressSelector>
             </div>
         )

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Input = (props) => {
+const InputURL = (props) => {
+
     let inputClassName = props.classes;
     if (props.hasError !== undefined) {
         inputClassName += props.hasError ? ' is-invalid' : ' is-valid';
@@ -12,10 +13,10 @@ const Input = (props) => {
             <input
                 name={props.name}
                 className={inputClassName}
-                type={props.type || 'text'}
-                placeholder={props.placeholder}
-                value={props.value}
+                type="url"
+                placeholder="https://example.com"
                 onChange={props.onChange}
+                pattern="https://.*"
                 required
             />
             {props.hasError && (
@@ -25,8 +26,8 @@ const Input = (props) => {
     );
 };
 
-Input.defaultProps = {
+InputURL.defaultProps = {
     onChange: () => { }
 };
 
-export default Input;
+export default InputURL;

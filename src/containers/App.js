@@ -8,6 +8,8 @@ import * as apiCalls from '../api/apiCalls'
 import TopBar from '../components/TopBar';
 import { ProtectedRouteEmployee } from '../routes/ProtectedRouteEmployee';
 import AddAddressPage from '../pages/AddAddressPage';
+import AddAddressPublisherPage from '../pages/publisher/AddAddressPublisherPage';
+import AddPublisherPage from '../pages/publisher/AddPublisherPage';
 
 const actions = {
   postLogin: apiCalls.login
@@ -26,6 +28,8 @@ function App() {
         <Route path="/login" exact element={<LoginPage actions={actions} />} />
         <Route path="/test-login" exact element={<ProtectedRouteEmployee><Testscreen /></ProtectedRouteEmployee>} />
         <Route path="/address/add" exact element={<ProtectedRouteEmployee><AddAddressPage /></ProtectedRouteEmployee>} />
+        <Route path="/publisher/add/1" exact element={<ProtectedRouteEmployee><AddAddressPublisherPage /></ProtectedRouteEmployee>} />
+        <Route path="/publisher/add/2/:idGotten" exact element={<ProtectedRouteEmployee><AddPublisherPage /></ProtectedRouteEmployee>} />
       </Routes>
     </div>
   );

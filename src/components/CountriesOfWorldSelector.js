@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import SelectSearch from 'react-select-search';
 
 const CountriesOfWorldSelector = (props) => {
+    const [country, setCountry] = useState('NL');
     const countriesList = require('../json/CountriesOfWorld.json');
-    let inputClassName = props.classes;
+
+    useEffect(() => {
+        props.onChange(country);
+    }, [country])
 
     return (
-        <div>
-            {props.label && <label className={props.labelClass}>{props.label}</label>}
-            <select name={props.name} className={inputClassName} onChange={props.onChange}>
-                {
-                    countriesList.map((country) => {
-                        return <option value={country.name} key={country.code}>{country.name}</option>
-                    })
-                }
-            </select>
-        </div>
+        <SelectSearch options={countriesList} value={country} onChange={setCountry} name={props.name} placeholder="Kies een land" search />
     );
 };
 
